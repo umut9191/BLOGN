@@ -10,6 +10,8 @@ namespace BLOGN.API.Mapping
         {
             //category can be map to CategoryDto and CategoryDto can be mep to Category
             CreateMap<Category, CategoryDto>().ReverseMap();
+            CreateMap<Article, ArticleDto>().ReverseMap();
+
         }
     }
 }
