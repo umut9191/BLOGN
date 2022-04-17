@@ -61,7 +61,16 @@ namespace BLOGN.Data.Repositories.Repository
 
         public User Register(string userName, string password)
         {
-            throw new NotImplementedException();
+            User user = new User()
+            {
+                UserName = userName,
+                Password = password,
+                Role = "Admin"
+            };
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            user.Password = "";
+            return user;
         }
     }
 }
