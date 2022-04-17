@@ -52,7 +52,11 @@ namespace BLOGN.Data.Repositories.Repository
 
         public bool IsUniqueUser(string userName)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.SingleOrDefault(x=>x.UserName == userName);
+            if (user == null)
+                return true;//no user found
+            return false;// user found
+
         }
 
         public User Register(string userName, string password)
