@@ -16,6 +16,7 @@ namespace BLOGN.Data.Repositories.Repository
         public Repository(ApplicationDbContext context)
         {
             _context = context;  
+            _dbSet = _context.Set<T>();
         }
         public async Task<bool> Add(T entity)
         {
