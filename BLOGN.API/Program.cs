@@ -1,3 +1,4 @@
+using BLOGN.API;
 using BLOGN.Data;
 using BLOGN.Data.Repositories.IRepository;
 using BLOGN.Data.Repositories.Repository;
@@ -25,7 +26,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var appSettings = builder.Configuration.GetSection("AppSettings");
+
 var app = builder.Build();
+builder.Services.Configure<AppSettings>(appSettings);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
