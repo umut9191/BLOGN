@@ -1,4 +1,4 @@
-﻿namespace BLOGN.API
+﻿namespace BLOGN.SharedTools
 {
     public class AppSettings
     {

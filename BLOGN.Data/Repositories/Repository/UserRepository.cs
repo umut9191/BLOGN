@@ -1,5 +1,7 @@
 ﻿using BLOGN.Data.Repositories.IRepository;
 using BLOGN.Models;
+using BLOGN.SharedTools;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,11 @@ namespace BLOGN.Data.Repositories.Repository
     public class UserRepository : Repository<User>, IUserRepository
     {
         private ApplicationDbContext _context;
-        public UserRepository(ApplicationDbContext context) : base(context)
+        private readonly AppSettings _appSettings;
+        public UserRepository(ApplicationDbContext context,IOptions<AppSettings> appSettings) : base(context)
         {
             _context = context;
+            _appSettings = appSettings.Value;
         }
 
         public User Authenticate(string userName, string password)
