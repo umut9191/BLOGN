@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BLOGN.Models\BLOGN.Models.csproj" />
+    <ProjectReference Include="..\BLOGN.SharedTools\BLOGN.SharedTools.csproj" />
   </ItemGroup>
 
 </Project>
