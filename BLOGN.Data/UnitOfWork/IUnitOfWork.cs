@@ -11,6 +11,7 @@ namespace BLOGN.Data.UnitOfWork
     {
         ICategoryRepository Category { get; }
         IArticleRepository Article { get; }
+        IUserRepository User { get; }
         Task SaveAsync();
         void Save();
     }
