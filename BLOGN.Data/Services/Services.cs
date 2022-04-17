@@ -19,34 +19,41 @@ namespace BLOGN.Data.Services
             _unitOfWork = unitOfWork;
             _repository = repository;
         }
-        public Task<bool> Add(T entity)
+        public async Task<bool> Add(T entity)
         {
-            throw new NotImplementedException();
+            await _repository.Add(entity);
+            await _unitOfWork.SaveAsync();
+            return true;
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            await _repository.Delete(id);
+            await _unitOfWork.SaveAsync();
+            return true;
         }
 
-        public Task<T> Get(int id)
+        public async Task<T> Get(int id)
         {
-            throw new NotImplementedException();
+          return  await _repository.Get(id);
+            
         }
 
-        public Task<ICollection<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
+        public async Task<ICollection<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {
-            throw new NotImplementedException();
+            return await _repository.GetAll(filter, orderBy, includeProperties);
         }
 
-        public Task<T> GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null)
+        public async Task<T> GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null)
         {
-            throw new NotImplementedException();
+            return await _repository.GetFirstOrDefault(filter, includeProperties);
         }
 
         public T Update(T entity)
         {
-            throw new NotImplementedException();
+         var newEntity = _repository.Update(entity);
+            _unitOfWork.Save();
+            return newEntity;
         }
     }
 }
