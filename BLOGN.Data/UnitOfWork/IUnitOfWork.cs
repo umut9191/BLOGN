@@ -10,6 +10,7 @@ namespace BLOGN.Data.UnitOfWork
     public interface IUnitOfWork:IDisposable
     {
         ICategoryRepository Category { get; }
+        IArticleRepository Article { get; }
         Task SaveAsync();
         void Save();
     }

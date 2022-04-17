@@ -16,6 +16,7 @@ namespace BLOGN.Data.UnitOfWork
             _context = context;
         }
         public ICategoryRepository Category => new CategoryRepository(_context);
+        public IArticleRepository Article => new ArticleRepository(_context);
 
         public void Dispose()
         {

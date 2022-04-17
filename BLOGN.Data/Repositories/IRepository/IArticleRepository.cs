@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLOGN.Data.Repositories.IRepository
 {
-    internal interface IArticleRepository:IRepository<Article>
+    public interface IArticleRepository:IRepository<Article>
     {
     }
 }
