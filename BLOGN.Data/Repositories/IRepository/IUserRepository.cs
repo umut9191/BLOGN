@@ -9,5 +9,10 @@ namespace BLOGN.Data.Repositories.IRepository
 {
     public interface IUserRepository:IRepository<User>
     {
+        //spesific things for users;
+        bool IsUniqueUser(string userName);
+        User Authenticate(string userName,string password);
+        User Register(string userName, string password);
+
     }
 }
