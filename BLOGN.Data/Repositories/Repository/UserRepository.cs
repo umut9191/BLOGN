@@ -69,7 +69,7 @@ namespace BLOGN.Data.Repositories.Repository
                 Role = "Admin"
             };
             _dbSet.Add(user);
-            _context.SaveChanges();
+           // _context.SaveChanges(); it will used on userService
             user.Password = "";
             return user;
         }
