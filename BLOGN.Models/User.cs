@@ -11,10 +11,10 @@ namespace BLOGN.Models
     {
         public int Id { get; set; }
         public string UserName { get; set; }
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
-        public string Cofirmation { get; set; }
+        public bool Cofirmation { get; set; }
         [NotMapped]
         public string Token { get; set; }
     }

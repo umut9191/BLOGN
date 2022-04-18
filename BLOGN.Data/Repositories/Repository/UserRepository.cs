@@ -68,7 +68,8 @@ namespace BLOGN.Data.Repositories.Repository
             {
                 UserName = userName,
                 Password = password,
-                Role = "Admin"
+                Role = "Admin",
+                Cofirmation = false
             };
             _dbSet.Add(user);
            // _context.SaveChanges(); it will used on userService
