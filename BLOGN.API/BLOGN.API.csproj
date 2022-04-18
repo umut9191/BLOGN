@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <DocumentationFile>xmlDoc/BLOGN.xml</DocumentationFile>
+    <DocumentationFile>xmlDoc/BLOGN.SharedTools.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
