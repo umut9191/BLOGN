@@ -25,5 +25,21 @@ namespace BLOGN.API.Controllers
             }
             return Ok(user);
         }
+        [HttpPost("register")]
+        public IActionResult Register(UserDto userDto)
+        {
+            bool userBool = _userServices.IsUniqueUser(userDto.UserName);
+            if (!userBool)
+            {
+                return BadRequest(new { message = "Kullanıcı Adı zaten kayıtlı" });
+            }
+            var user = _userServices.Register(userDto.UserName, userDto.Password);
+            if (user==null)
+            {
+                return BadRequest(new { message = "Kayıt esnasında hata oluştu" });
+
+            }
+            return Ok(user);
+        }
     }
 }
