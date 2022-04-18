@@ -21,11 +21,12 @@ namespace BLOGN.Data.Repositories.Repository
         {
             _context = context;
             _appSettings = appSettings.Value;
+            _dbSet = _context.Set<User>();
         }
 
         public User Authenticate(string userName, string password)
         {
-            var user = _context.Users.SingleOrDefault(u => u.UserName == userName && u.Password == password);
+            var user = _dbSet.SingleOrDefault(u => u.UserName == userName && u.Password == password);
             if (user == null)
             {
                 return null;
@@ -52,7 +53,7 @@ namespace BLOGN.Data.Repositories.Repository
 
         public bool IsUniqueUser(string userName)
         {
-            var user = _context.Users.SingleOrDefault(x=>x.UserName == userName);
+            var user = _dbSet.SingleOrDefault(x=>x.UserName == userName);
             if (user == null)
                 return true;//no user found
             return false;// user found
@@ -67,7 +68,7 @@ namespace BLOGN.Data.Repositories.Repository
                 Password = password,
                 Role = "Admin"
             };
-            _context.Users.Add(user);
+            _dbSet.Add(user);
             _context.SaveChanges();
             user.Password = "";
             return user;
