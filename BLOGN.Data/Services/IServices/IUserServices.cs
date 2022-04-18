@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace BLOGN.Data.Services.IServices
 {
-    public interface IUserServices:IService<User>
+    public interface IUserServices//:IService<User>
     {
+        bool IsUniqueUser(string userName);
+        User Authenticate(string userName, string password);
+        User Register(string userName, string password);
     }
 }

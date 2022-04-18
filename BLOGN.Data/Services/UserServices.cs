@@ -10,10 +10,32 @@ using System.Threading.Tasks;
 
 namespace BLOGN.Data.Services
 {
-    public class UserServices : Services<User>, IUserServices
+    public class UserServices :  IUserServices
     {
-        public UserServices(IUnitOfWork unitOfWork, IRepository<User> repository) : base(unitOfWork, repository)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserRepository _userRepository;
+        public UserServices(IUnitOfWork unitOfWork, IUserRepository userRepository) 
         {
+            _unitOfWork = unitOfWork;
+            _userRepository = userRepository;
+        }
+
+        public User Authenticate(string userName, string password)
+        {
+            var user  = _userRepository.Authenticate(userName,password);
+            return user;
+        }
+
+        public bool IsUniqueUser(string userName)
+        {
+           return _userRepository.IsUniqueUser(userName);
+        }
+
+        public User Register(string userName, string password)
+        {
+           var user = _userRepository.Register(userName,password);
+            _unitOfWork.Save();
+            return user;
         }
     }
 }
