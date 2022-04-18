@@ -31,9 +31,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var appSettings = builder.Configuration.GetSection("AppSettings");
-
-var app = builder.Build();
 builder.Services.Configure<AppSettings>(appSettings);
+
+
 
 var appSettingsB = appSettings.Get<AppSettings>();
 var key = Encoding.ASCII.GetBytes(appSettingsB.Secret);
@@ -54,7 +54,7 @@ builder.Services.AddAuthentication(x =>
             ValidateAudience = false
         };
     });
-
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
