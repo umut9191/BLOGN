@@ -1,4 +1,5 @@
 ﻿using BLOGN.Data.Repositories.IRepository;
+using BLOGN.Data.Services.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,10 @@ namespace BLOGN.API.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUserRepository _userRepository;
-        public UsersController(IUserRepository userRepository)
+        private readonly IUserServices _userServices;
+        public UsersController(IUserServices userServices)
         {
-            _userRepository = userRepository;
+            _userServices = userServices;
         }
     }
 }
