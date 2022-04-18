@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BLOGN.Data.Repositories.IRepository
 {
-    public interface IUserRepository:IRepository<User>
+    public interface IUserRepository
     {
         //spesific things for users;
         bool IsUniqueUser(string userName);

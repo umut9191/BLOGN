@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddCors();
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -19,6 +19,7 @@ builder.Services.AddScoped(typeof(IService<>), typeof(Services<>));
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<IArticleServices, ArticleServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

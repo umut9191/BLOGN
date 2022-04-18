@@ -1,6 +1,7 @@
 ﻿using BLOGN.Data.Repositories.IRepository;
 using BLOGN.Models;
 using BLOGN.SharedTools;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -13,11 +14,12 @@ using System.Threading.Tasks;
 
 namespace BLOGN.Data.Repositories.Repository
 {
-    public class UserRepository : Repository<User>, IUserRepository
+    public class UserRepository : IUserRepository
     {
         private ApplicationDbContext _context;
         private readonly AppSettings _appSettings;
-        public UserRepository(ApplicationDbContext context, IOptions<AppSettings> appSettings) : base(context)
+        private readonly DbSet<User> _dbSet;
+        public UserRepository(ApplicationDbContext context, IOptions<AppSettings> appSettings)
         {
             _context = context;
             _appSettings = appSettings.Value;

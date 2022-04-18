@@ -1,5 +1,7 @@
 ﻿using BLOGN.Data.Repositories.IRepository;
 using BLOGN.Data.Repositories.Repository;
+using BLOGN.SharedTools;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +13,15 @@ namespace BLOGN.Data.UnitOfWork
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ApplicationDbContext _context;
-        public UnitOfWork(ApplicationDbContext context)
+        private readonly IOptions<AppSettings> _appSettings;
+        public UnitOfWork(ApplicationDbContext context, IOptions<AppSettings> appSettings)
         {
             _context = context;
+            _appSettings = appSettings;
         }
         public ICategoryRepository Category => new CategoryRepository(_context);
         public IArticleRepository Article => new ArticleRepository(_context);
-        public IUserRepository User => new UserRepository(_context);
+        public IUserRepository User => new UserRepository(_context, _appSettings);
         public void Dispose()
         {
             _context.Dispose();
